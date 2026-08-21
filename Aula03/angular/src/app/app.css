@@ -1,0 +1,186 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+.container {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: #1e1e2f;
+}
+
+.jogo {
+  width: 100%;
+  max-width: 450px;
+
+  padding: 35px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 20px;
+
+  color: #25253a;
+
+  font-size: 32px;
+}
+
+.status {
+  min-height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.status p {
+  margin: 0;
+
+  color: #555;
+
+  font-size: 18px;
+}
+
+.status strong {
+  color: #6c5ce7;
+
+  font-size: 22px;
+}
+
+.vitoria {
+  color: #00a86b !important;
+
+  font-weight: bold;
+}
+
+.empate {
+  color: #e67e22 !important;
+
+  font-weight: bold;
+}
+
+
+/* TABULEIRO */
+
+.tabuleiro {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 25px;
+}
+
+.casa {
+  border: none;
+
+  border-radius: 12px;
+
+  background: #eeeeF5;
+
+  font-size: 55px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s,
+    background 0.15s;
+}
+
+.casa:hover {
+  background: #dedeee;
+
+  transform: scale(1.03);
+}
+
+.casa:active {
+  transform: scale(0.95);
+}
+
+.casa.x {
+  color: #6c5ce7;
+}
+
+.casa.o {
+  color: #e84393;
+}
+
+
+/* BOTÃO */
+
+.btn-reiniciar {
+  width: 100%;
+
+  padding: 14px 20px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #6c5ce7;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.btn-reiniciar:hover {
+  background: #5849c7;
+
+  transform: translateY(-2px);
+}
+
+.btn-reiniciar:active {
+  transform: translateY(0);
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 500px) {
+
+  .jogo {
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+
+  .casa {
+    font-size: 42px;
+  }
+}

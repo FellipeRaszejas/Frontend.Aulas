@@ -1,0 +1,64 @@
+<div class="container">
+
+  <div class="jogo">
+
+    <h1>Jogo da Velha</h1>
+
+    <div class="status">
+
+      @if (!vencedor && !empate) {
+
+        <p>
+          Vez do jogador:
+          <strong>{{ jogadorAtual }}</strong>
+        </p>
+
+      }
+
+      @if (vencedor) {
+
+        <p class="vitoria">
+          🎉 Jogador {{ vencedor }} venceu!
+        </p>
+
+      }
+
+      @if (empate) {
+
+        <p class="empate">
+          🤝 O jogo terminou em empate!
+        </p>
+
+      }
+
+    </div>
+
+
+    <div class="tabuleiro">
+
+      @for (casa of tabuleiro; track $index) {
+
+        <button
+          class="casa"
+          [class.x]="casa === 'X'"
+          [class.o]="casa === 'O'"
+          (click)="jogar($index)"
+        >
+          {{ casa }}
+        </button>
+
+      }
+
+    </div>
+
+
+    <button
+      class="btn-reiniciar"
+      (click)="reiniciar()"
+    >
+      Reiniciar jogo
+    </button>
+
+  </div>
+
+</div>
