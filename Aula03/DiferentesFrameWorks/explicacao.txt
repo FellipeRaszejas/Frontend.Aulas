@@ -1,0 +1,2 @@
+O objetivo da Aula foi conhecer diferentes tipos de frameworks
+Por isso foi desenvolvido (utilizando IA) alguns jogos em frameworks para aprendizado sobre sua estrutura e funcionamento padrão

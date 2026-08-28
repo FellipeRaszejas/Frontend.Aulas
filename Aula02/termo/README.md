@@ -1,70 +1,165 @@
-# Getting Started with Create React App
+# 🔤 Termo — Componentes React UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Interface de usuário construída em React para o jogo de adivinhação de palavras **Termo** (inspirado no *Wordle*). Este repositório contém os componentes modulares de apresentação responsáveis pelo tabuleiro, teclado virtual, cabeçalho e modal de fim de jogo.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📋 Sumário
 
-### `npm start`
+- [Estrutura dos Componentes](#-estrutura-dos-componentes)
+- [Documentação dos Componentes](#-documentação-dos-componentes)
+  - [1. Board & Tile](#1-board--tile)
+  - [2. Keyboard](#2-keyboard)
+  - [3. GameOver](#3-gameover)
+  - [4. Header](#4-header)
+- [Estrutura de Classes CSS](#-estrutura-de-classes-css)
+- [Exemplo de Uso](#-exemplo-de-uso)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧩 Estrutura dos Componentes
 
-### `npm test`
+O projeto é dividido em quatro componentes principais de apresentação:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+src/
+├── components/
+│   ├── Board.jsx       # Grade principal e blocos de letras (Tile)
+│   ├── Keyboard.jsx    # Teclado virtual interativo (QWERTY)
+│   ├── GameOver.jsx    # Modal de encerramento da partida
+│   └── Header.jsx      # Cabeçalho com título e instruções
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📘 Documentação dos Componentes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Board & Tile
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Renderiza a grade de palpites e os quadros individuais de cada letra.
 
-### `npm run eject`
+* **`Tile`**: Componente interno que exibe uma única letra e gerencia suas classes de estado (`tile-filled`, `tile-correct`, `tile-present`, `tile-absent`).
+* **`Board`**: Mapeia a matriz de palpites e calcula a avaliação visual de cada posição com base na linha atual.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Props (`Board`)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Prop | Tipo | Obrigatório | Descrição |
+| :--- | :--- | :---: | :--- |
+| `board` | `Array<Array<string>>` | Sim | Matriz com as letras digitadas organizadas por linha e coluna. |
+| `evaluations` | `Array<Array<string>>` | Sim | Matriz com os status de validação (`"correct"`, `"present"`, `"absent"`) de cada letra. |
+| `currentRow` | `number` | Sim | Índice da linha ativa (tentativa atual do jogador). |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. Keyboard
 
-## Learn More
+Renderiza o teclado virtual interativo no layout QWERTY.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Destaca teclas especiais (`ENTER` e `BACKSPACE`).
+* Aplica status visual às teclas com base no histórico de palpites do jogador.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Props (`Keyboard`)
 
-### Code Splitting
+| Prop | Tipo | Obrigatório | Descrição |
+| :--- | :--- | :---: | :--- |
+| `onKey` | `(key: string) => void` | Sim | Função disparada ao clicar em qualquer tecla do teclado virtual. |
+| `keyStatus` | `Record<string, string>` | Sim | Objeto com o status de cada letra (ex: `{ A: "correct", B: "absent" }`). |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### 3. GameOver
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Modal exibido ao finalizar uma partida (vitória ou derrota).
 
-### Making a Progressive Web App
+#### Props (`GameOver`)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Prop | Tipo | Obrigatório | Descrição |
+| :--- | :--- | :---: | :--- |
+| `won` | `boolean` | Sim | Indica se o jogador venceu (`true`) ou perdeu (`false`). |
+| `target` | `string` | Sim | A palavra correta da rodada. |
+| `attempts` | `number` | Sim | Quantidade de tentativas utilizadas. |
+| `onRestart` | `() => void` | Sim | Função executada ao clicar no botão "JOGAR NOVAMENTE". |
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 4. Header
 
-### Deployment
+Barra superior de navegação da aplicação contendo o título do jogo e o botão de ajuda.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### Props (`Header`)
 
-### `npm run build` fails to minify
+| Prop | Tipo | Obrigatório | Descrição |
+| :--- | :--- | :---: | :--- |
+| `onHelp` | `() => void` | Sim | Função disparada ao clicar no botão de instrução (`?`). |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🎨 Estrutura de Classes CSS
+
+Para que os componentes tenham a renderização correta, o arquivo CSS do projeto deve conter o tratamento das seguintes classes:
+
+### Tabuleiro e Quadrados
+- `.board`: Container da grade.
+- `.board-row`: Linha do tabuleiro.
+- `.tile`: Quadrado individual de letra.
+- `.tile-filled`: Quadrado com letra digitada.
+- `.tile-correct`: Letra correta na posição correta (Verde).
+- `.tile-present`: Letra existente na palavra, mas em outra posição (Amarelo).
+- `.tile-absent`: Letra inexistente na palavra (Cinza escuro).
+
+### Teclado
+- `.keyboard`: Container do teclado.
+- `.keyboard-row`: Linha do teclado.
+- `.key`: Tecla individual.
+- `.key-special`: Teclas `ENTER` e `BACKSPACE`.
+- `.key-correct`, `.key-present`, `.key-absent`: Estados de cor correspondentes às letras.
+
+### Modal e Cabeçalho
+- `.modal-overlay`, `.modal`, `.modal-icon`, `.answer`, `.restart-button`
+- `.header`, `.logo`, `.help-button`
+
+---
+
+## 💻 Exemplo de Uso
+
+```jsx
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Board from "./components/Board";
+import Keyboard from "./components/Keyboard";
+import GameOver from "./components/GameOver";
+
+export default function App() {
+  const [board, setBoard] = useState([
+    ["T", "E", "R", "M", "O"],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""],
+    ["", "", "", "", ""]
+  ]);
+
+  const [evaluations, setEvaluations] = useState([
+    ["correct", "present", "absent", "correct", "correct"]
+  ]);
+
+  const [keyStatus, setKeyStatus] = useState({
+    T: "correct",
+    E: "present",
+    R: "absent",
+    M: "correct",
+    O: "correct"
+  });
+
+  const handleKey = (key) => {
+    console.log("Tecla pressionada:", key);
+  };
+
+  return (
+    <div className="app">
+      <Header onHelp={() => alert("Instruções...")} />
+      <Board board={board} evaluations={evaluations} currentRow={1} />
+      <Keyboard onKey={handleKey} keyStatus={keyStatus} />
+    </div>
+  );
+}
