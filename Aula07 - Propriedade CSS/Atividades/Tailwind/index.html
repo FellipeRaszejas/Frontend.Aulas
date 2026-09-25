@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSight - Controle Financeiro Inteligente</title>
+    <!-- CDN do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen font-sans selection:bg-emerald-500 selection:text-white">
+
+    <!-- 1. NAVBAR SUPERIOR -->
+    <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    F
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-900">Fin<span class="text-emerald-600">Sight</span></span>
+                    <span class="block text-xs text-slate-400 font-medium">Controle Inteligente</span>
+                </div>
+            </div>
+
+            <!-- Menu de Navegação (Desktop) -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#" class="text-emerald-600 font-semibold transition hover:text-emerald-700">Dashboard</a>
+                <a href="#" class="transition hover:text-emerald-600">Transações</a>
+                <a href="#" class="transition hover:text-emerald-600">Orçamentos</a>
+                <a href="#" class="transition hover:text-emerald-600">Investimentos</a>
+                <a href="#" class="transition hover:text-emerald-600">Metas & Poupança</a>
+            </nav>
+
+            <!-- Perfil do Usuário na Navbar -->
+            <div class="flex items-center gap-3 bg-slate-100 hover:bg-slate-200/70 p-1.5 pr-4 rounded-full transition cursor-pointer border border-slate-200/80">
+                <img class="w-10 h-10 rounded-full object-cover border-2 border-emerald-500 shadow-xs" 
+                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" 
+                     alt="Foto de Perfil">
+                <div class="text-left">
+                    <h4 class="text-xs font-bold text-slate-900 leading-tight">Juliana Silva</h4>
+                    <!-- Tipo de Usuário -->
+                    <span class="inline-block px-2 py-0.5 mt-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-semibold tracking-wide">
+                        Investidor Passivo 🛡️
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. CONTEÚDO PRINCIPAL -->
+    <main class="w-[95%] max-w-7xl mx-auto my-8 flex-1 flex flex-col gap-8">
+
+        <!-- Seção de Ações Rápidas (Adicionar Conta / Gasto / Orçamento) -->
+        <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-2">Visão Geral de Outubro</h2>
+                <p class="text-slate-300 text-sm max-w-xl">Seu patrimônio cresceu 4.2% este mês. Seus gastos com alimentação estão 15% abaixo da média projetada.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+                <button class="flex-1 lg:flex-none bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3 rounded-xl font-semibold text-sm shadow-lg shadow-emerald-900/20 transition flex items-center justify-center gap-2">
+                    <span>➕</span> Adicionar Gasto
+                </button>
+                <button class="flex-1 lg:flex-none bg-white/10 hover:bg-white/20 text-white border border-white/20 px-5 py-3 rounded-xl font-semibold text-sm transition flex items-center justify-center gap-2 backdrop-blur-md">
+                    <span>🏦</span> Nova Conta
+                </button>
+                <button class="flex-1 lg:flex-none bg-white/10 hover:bg-white/20 text-white border border-white/20 px-5 py-3 rounded-xl font-semibold text-sm transition flex items-center justify-center gap-2 backdrop-blur-md">
+                    <span>🎯</span> Criar Orçamento
+                </button>
+            </div>
+        </section>
+
+        <!-- Grid de Painéis Principais -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Coluna Esquerda/Centro: Gráficos e Insights (Ocupa 2 colunas) -->
+            <div class="lg:col-span-2 flex flex-col gap-8">
+                
+                <!-- Card de Gráficos Financeiros -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">Evolução Patrimonial & Gastos</h3>
+                            <p class="text-xs text-slate-400">Comparativo dos últimos 6 meses</p>
+                        </div>
+                        <select class="bg-slate-100 border border-slate-200 rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-600 focus:outline-none">
+                            <option>Últimos 6 meses</option>
+                            <option>Este Ano</option>
+                        </select>
+                    </div>
+
+                    <!-- Simulação Visual de Gráfico em Barras/Linha com Tailwind -->
+                    <div class="h-64 w-full bg-slate-50 rounded-xl border border-dashed border-slate-200 p-4 flex items-end justify-between gap-2 sm:gap-4">
+                        <div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+                            <div class="w-full bg-emerald-500/80 hover:bg-emerald-600 h-[40%] rounded-t-lg transition"></div>
+                            <span class="text-[10px] text-slate-500 font-medium">Mai</span>
+                        </div>
+                        <div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+                            <div class="w-full bg-emerald-500/80 hover:bg-emerald-600 h-[60%] rounded-t-lg transition"></div>
+                            <span class="text-[10px] text-slate-500 font-medium">Jun</span>
+                        </div>
+                        <div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+                            <div class="w-full bg-emerald-500/80 hover:bg-emerald-600 h-[50%] rounded-t-lg transition"></div>
+                            <span class="text-[10px] text-slate-500 font-medium">Jul</span>
+                        </div>
+                        <div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+                            <div class="w-full bg-emerald-500/80 hover:bg-emerald-600 h-[75%] rounded-t-lg transition"></div>
+                            <span class="text-[10px] text-slate-500 font-medium">Ago</span>
+                        </div>
+                        <div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+                            <div class="w-full bg-emerald-500/80 hover:bg-emerald-600 h-[85%] rounded-t-lg transition"></div>
+                            <span class="text-[10px] text-slate-500 font-medium">Set</span>
+                        </div>
+                        <div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+                            <div class="w-full bg-emerald-600 h-[95%] rounded-t-lg shadow-md transition"></div>
+                            <span class="text-[10px] text-slate-900 font-bold">Out</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Orçamentos e Poupança (Cards Interativos) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Orçamento do Mês -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="font-bold text-slate-900">Orçamento de Alimentação</h4>
+                                <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">78% Utilizado</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-4">R$ 1.170,00 gastos de R$ 1.500,00 planejados.</p>
+                            <!-- Barra de Progresso -->
+                            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                                <div class="bg-amber-500 h-full rounded-full" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <span class="text-xs font-semibold text-emerald-600 mt-6 inline-flex items-center gap-1">Ver detalhes do orçamento &rarr;</span>
+                    </div>
+
+                    <!-- Poupança / Reserva de Emergência -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="font-bold text-slate-900">Reserva de Emergência</h4>
+                                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">92% Concluído</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-4">R$ 27.600,00 guardados de R$ 30.000,00.</p>
+                            <!-- Barra de Progresso -->
+                            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-full rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <span class="text-xs font-semibold text-emerald-600 mt-6 inline-flex items-center gap-1">Aportar na poupança &rarr;</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Coluna Direita: Contas Vinculadas e Dicas FinSight -->
+            <div class="flex flex-col gap-8">
+                
+                <!-- Contas Vinculadas -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4">Contas & Cartões</h3>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm">NU</div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-800">Nubank Corrente</h5>
+                                    <span class="text-[10px] text-slate-400">Principal</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-900">R$ 4.350,20</span>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-sm">XP</div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-800">XP Investimentos</h5>
+                                    <span class="text-[10px] text-slate-400">Renda Fixa</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-900">R$ 38.900,00</span>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">BB</div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-800">Banco do Brasil</h5>
+                                    <span class="text-[10px] text-slate-400">Poupança</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-slate-900">R$ 12.150,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dica / Perfil Investor Insights -->
+                <div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl p-6 text-white shadow-md">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="text-xl">💡</span>
+                        <h4 class="font-bold text-base">FinSight IA Assistant</h4>
+                    </div>
+                    <p class="text-xs text-emerald-50 leading-relaxed mb-4">
+                        Como um <strong>Investidor Passivo</strong>, sua estratégia de alocação em Tesouro IPCA+ está rendendo acima da inflação média proyectada. Mantenha os aportes mensais automáticos!
+                    </p>
+                    <button class="w-full bg-white text-emerald-800 font-bold text-xs py-2.5 rounded-xl shadow-sm hover:bg-emerald-50 transition">
+                        Ver Relatório de Investimentos
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-white border-t border-slate-200 text-center py-6 mt-auto">
+        <p class="text-xs text-slate-400">FinSight Plataforma de Controle Financeiro © 2026 — Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
