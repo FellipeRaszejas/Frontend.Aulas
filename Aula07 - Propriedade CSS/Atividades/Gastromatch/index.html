@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GastroMatch - Receitas Deliciosas</title>
+    <!-- CDN do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#fff8f0] text-[#3e2723] flex flex-col min-h-screen font-sans selection:bg-[#ff7043] selection:text-white">
+
+    <!-- HEADER -->
+    <header class="w-full bg-[#ff7043] text-white text-center py-10 px-4 border-b-4 border-[#e65100] shadow-md">
+        <h1 class="text-4xl font-extrabold mb-2 tracking-tight">GastroMatch</h1>
+        <p class="text-lg opacity-90">Escolha uma receita para preparar hoje!</p>
+    </header>
+
+    <!-- CONTAINER PRINCIPAL -->
+    <main class="w-[92%] max-w-7xl mx-auto my-8 p-6 sm:p-10 bg-white rounded-2xl border-2 border-[#ffccbc] shadow-lg flex-1">
+
+        <!-- GRID DE CARDS -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            <!-- CARD 1: Bolo de Chocolate -->
+            <article class="bg-white rounded-xl border-2 border-[#ffccbc] p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+                <div>
+                    <div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500" alt="Bolo de Chocolate" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <h2 class="text-xl font-bold text-[#e65100] mb-2">Bolo de Chocolate</h2>
+                    <p class="text-sm text-[#5d4037] mb-4 leading-relaxed">Bolo fofinho de chocolate com cobertura cremosa.</p>
+                </div>
+                <span class="text-sm font-bold text-[#e65100] mt-auto">⏱ 45 min</span>
+            </article>
+
+            <!-- CARD 2: Lasanha à Bolonhesa -->
+            <article class="bg-white rounded-xl border-2 border-[#ffccbc] p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+                <div>
+                    <div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=500" alt="Lasanha à Bolonhesa" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <h2 class="text-xl font-bold text-[#e65100] mb-2">Lasanha à Bolonhesa</h2>
+                    <p class="text-sm text-[#5d4037] mb-4 leading-relaxed">Lasanha tradicional com molho de carne e queijo.</p>
+                </div>
+                <span class="text-sm font-bold text-[#e65100] mt-auto">⏱ 60 min</span>
+            </article>
+
+            <!-- CARD 3: Pizza Caseira -->
+            <article class="bg-white rounded-xl border-2 border-[#ffccbc] p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+                <div>
+                    <div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" alt="Pizza Caseira" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <h2 class="text-xl font-bold text-[#e65100] mb-2">Pizza Caseira</h2>
+                    <p class="text-sm text-[#5d4037] mb-4 leading-relaxed">Pizza feita em casa com massa crocante e queijo.</p>
+                </div>
+                <span class="text-sm font-bold text-[#e65100] mt-auto">⏱ 50 min</span>
+            </article>
+
+            <!-- CARD 4: Panqueca -->
+            <article class="bg-white rounded-xl border-2 border-[#ffccbc] p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+                <div>
+                    <div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500" alt="Panqueca" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <h2 class="text-xl font-bold text-[#e65100] mb-2">Panqueca</h2>
+                    <p class="text-sm text-[#5d4037] mb-4 leading-relaxed">Panquecas leves e macias para um café da manhã.</p>
+                </div>
+                <span class="text-sm font-bold text-[#e65100] mt-auto">⏱ 25 min</span>
+            </article>
+
+            <!-- CARD 5: Brigadeiro -->
+            <article class="bg-white rounded-xl border-2 border-[#ffccbc] p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+                <div>
+                    <div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=500" alt="Brigadeiro" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <h2 class="text-xl font-bold text-[#e65100] mb-2">Brigadeiro</h2>
+                    <p class="text-sm text-[#5d4037] mb-4 leading-relaxed">Doce brasileiro feito com chocolate e leite condensado.</p>
+                </div>
+                <span class="text-sm font-bold text-[#e65100] mt-auto">⏱ 20 min</span>
+            </article>
+
+            <!-- CARD 6: Salada Tropical -->
+            <article class="bg-white rounded-xl border-2 border-[#ffccbc] p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+                <div>
+                    <div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500" alt="Salada Tropical" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <h2 class="text-xl font-bold text-[#e65100] mb-2">Salada Tropical</h2>
+                    <p class="text-sm text-[#5d4037] mb-4 leading-relaxed">Salada fresca com frutas, folhas e molho especial.</p>
+                </div>
+                <span class="text-sm font-bold text-[#e65100] mt-auto">⏱ 15 min</span>
+            </article>
+
+            <!-- CARD 7: Hambúrguer Artesanal -->
+            <article class="bg-white rounded-xl border-2 border-[#ffccbc] p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+                <div>
+                    <div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" alt="Hambúrguer Artesanal" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <h2 class="text-xl font-bold text-[#e65100] mb-2">Hambúrguer Artesanal</h2>
+                    <p class="text-sm text-[#5d4037] mb-4 leading-relaxed">Hambúrguer suculento com queijo, tomate e alface.</p>
+                </div>
+                <span class="text-sm font-bold text-[#e65100] mt-auto">⏱ 30 min</span>
+            </article>
+
+            <!-- CARD 8: Pudim de Leite -->
+            <article class="bg-white rounded-xl border-2 border-[#ffccbc] p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+                <div>
+                    <div class="w-full h-40 rounded-lg mb-4 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=500" alt="Pudim de Leite" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    <h2 class="text-xl font-bold text-[#e65100] mb-2">Pudim de Leite</h2>
+                    <p class="text-sm text-[#5d4037] mb-4 leading-relaxed">Pudim cremoso com uma deliciosa calda de caramelo.</p>
+                </div>
+                <span class="text-sm font-bold text-[#e65100] mt-auto">⏱ 50 min</span>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-[#3e2723] text-white text-center py-6 mt-auto border-t-4 border-[#e65100]">
+        <p class="text-sm opacity-80">Receitas Deliciosas © 2026</p>
+    </footer>
+
+</body>
+</html>

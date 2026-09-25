@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSight - Histórico de Transações</title>
+    <!-- CDN do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen font-sans selection:bg-emerald-500 selection:text-white">
+
+    <!-- 1. NAVBAR SUPERIOR -->
+    <header class="w-full bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    F
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-900">Fin<span class="text-emerald-600">Sight</span></span>
+                    <span class="block text-xs text-slate-400 font-medium">Controle Financeiro</span>
+                </div>
+            </div>
+
+            <!-- Menu de Navegação -->
+          <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="index.html" class="text-emerald-600 font-semibold transition hover:text-emerald-700">Dashboard</a>
+                <a href="transacoes.html" class="transition hover:text-emerald-600">Transações</a>
+                <a href="Investimentos.html" class="transition hover:text-emerald-600">Investimentos</a>
+                <a href="#" class="transition hover:text-emerald-600">Metas & Poupança</a>
+            </nav>
+            <!-- Perfil do Usuário na Navbar -->
+            <div class="flex items-center gap-3 bg-slate-100 hover:bg-slate-200/70 p-1.5 pr-4 rounded-full transition cursor-pointer border border-slate-200/80">
+                <img class="w-10 h-10 rounded-full object-cover border-2 border-emerald-500 shadow-xs" 
+                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" 
+                     alt="Foto de Perfil">
+                <div class="text-left">
+                    <h4 class="text-xs font-bold text-slate-900 leading-tight">Juliana Silva</h4>
+                    <span class="inline-block px-2 py-0.5 mt-0.5 bg-emerald-100 text-emerald-700 rounded-full text-[10px] font-semibold tracking-wide">
+                        Investidor Passivo 🛡️
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. CONTEÚDO PRINCIPAL -->
+    <main class="w-[95%] max-w-7xl mx-auto my-8 flex-1 flex flex-col gap-8">
+
+        <!-- Header da Página -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-900">Histórico de Transações</h1>
+                <p class="text-xs text-slate-500">Visualize todas as entradas e saídas consolidadas de suas contas.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleModal(true)" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2">
+                    <span>🔗</span> Sincronizar Bancos
+                </button>
+                <button class="bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs px-4 py-2.5 rounded-xl border border-slate-200 transition">
+                    Filtrar por Período
+                </button>
+            </div>
+        </div>
+
+        <!-- Tabela de Transações (Estado Parcial / Demonstrativo) -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+            <div class="p-6 border-b border-slate-100 flex items-center justify-between">
+                <h3 class="font-bold text-slate-900 text-sm">Últimas Lançamentos Registrados</h3>
+                <span class="text-xs text-amber-600 bg-amber-50 font-semibold px-2.5 py-1 rounded-full">Modo Demonstração (Nubank Apenas)</span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-100">
+                            <th class="py-3 px-6 font-semibold">Descrição</th>
+                            <th class="py-3 px-6 font-semibold">Categoria</th>
+                            <th class="py-3 px-6 font-semibold">Banco</th>
+                            <th class="py-3 px-6 font-semibold">Data</th>
+                            <th class="py-3 px-6 font-semibold text-right">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700 text-xs">
+                        <tr class="hover:bg-slate-50/80 transition">
+                            <td class="py-4 px-6 font-medium text-slate-900">Supermercado Extra</td>
+                            <td class="py-4 px-6"><span class="bg-orange-50 text-orange-700 px-2.5 py-1 rounded-md font-medium">Alimentação</span></td>
+                            <td class="py-4 px-6 text-slate-500">Nubank</td>
+                            <td class="py-4 px-6 text-slate-500">Hoje, 14:20</td>
+                            <td class="py-4 px-6 font-bold text-slate-900 text-right">- R$ 248,50</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition">
+                            <td class="py-4 px-6 font-medium text-slate-900">Salário Mensal - Tech Corp</td>
+                            <td class="py-4 px-6"><span class="bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-md font-medium">Receita</span></td>
+                            <td class="py-4 px-6 text-slate-500">Nubank</td>
+                            <td class="py-4 px-6 text-slate-500">Ontem</td>
+                            <td class="py-4 px-6 font-bold text-emerald-600 text-right">+ R$ 8.500,00</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition">
+                            <td class="py-4 px-6 font-medium text-slate-900">Posto Ipiranga Gasolina</td>
+                            <td class="py-4 px-6"><span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md font-medium">Transporte</span></td>
+                            <td class="py-4 px-6 text-slate-500">Nubank</td>
+                            <td class="py-4 px-6 text-slate-500">22 Set</td>
+                            <td class="py-4 px-6 font-bold text-slate-900 text-right">- R$ 180,00</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50/80 transition">
+                            <td class="py-4 px-6 font-medium text-slate-900">Netflix Assinatura</td>
+                            <td class="py-4 px-6"><span class="bg-purple-50 text-purple-700 px-2.5 py-1 rounded-md font-medium">Lazer</span></td>
+                            <td class="py-4 px-6 text-slate-500">Nubank</td>
+                            <td class="py-4 px-6 text-slate-500">20 Set</td>
+                            <td class="py-4 px-6 font-bold text-slate-900 text-right">- R$ 55,90</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="p-4 bg-slate-50 border-t border-slate-100 text-center">
+                <p class="text-xs text-slate-500">Faltando transações da XP, Itaú e Banco do Brasil? <button onclick="toggleModal(true)" class="text-emerald-600 font-semibold underline hover:text-emerald-700">Conecte seus bancos agora</button>.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 3. MODAL DE CONEXÃO DE BANCOS (Open/Close via JS) -->
+    <div id="bankModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 backdrop-blur-xs hidden">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-[92%] shadow-2xl border border-slate-100 flex flex-col gap-6 relative animate-in fade-in zoom-in-95 duration-200">
+            
+            <!-- Botão Fechar -->
+            <button onclick="toggleModal(false)" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 font-bold text-lg w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center transition">
+                &times;
+            </button>
+
+            <!-- Ícone e Título -->
+            <div class="text-center sm:text-left">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold mb-4 mx-auto sm:mx-0 shadow-xs">
+                    🔒
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-1">Conecte todos os bancos</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Conecte todos os bancos para ter acesso a histórico real completo de extratos, cartões e investimentos em um só lugar com segurança Open Finance.
+                </p>
+            </div>
+
+            <!-- Lista de Bancos Disponíveis para Conexão -->
+            <div class="grid grid-cols-2 gap-3">
+                <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-emerald-500 bg-slate-50 cursor-pointer transition">
+                    <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xs">NU</div>
+                    <span class="text-xs font-bold text-slate-800">Nubank</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-emerald-500 bg-slate-50 cursor-pointer transition">
+                    <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs">XP</div>
+                    <span class="text-xs font-bold text-slate-800">XP Investimentos</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-emerald-500 bg-slate-50 cursor-pointer transition">
+                    <div class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs">IT</div>
+                    <span class="text-xs font-bold text-slate-800">Itaú Unibanco</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-emerald-500 bg-slate-50 cursor-pointer transition">
+                    <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs">BB</div>
+                    <span class="text-xs font-bold text-slate-800">Banco do Brasil</span>
+                </div>
+            </div>
+
+            <!-- Ações do Modal -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button onclick="alert('Conexão Open Finance iniciada com sucesso!'); toggleModal(false);" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-3 rounded-xl shadow-md transition">
+                    Prosseguir com Open Finance
+                </button>
+                <button onclick="toggleModal(false)" class="bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold text-xs py-3 px-5 rounded-xl transition">
+                    Agora não
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-white border-t border-slate-200 text-center py-6 mt-auto">
+        <p class="text-xs text-slate-400">FinSight Plataforma de Controle Financeiro © 2026 — Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- SCRIPT DE CONTROLE DO MODAL -->
+    <script>
+        function toggleModal(show) {
+            const modal = document.getElementById('bankModal');
+            if (show) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+
+</body>
+</html>
